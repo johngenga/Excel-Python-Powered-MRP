@@ -68,18 +68,6 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
 }</component>
-  <component name="QodanaHighlightedReportService">
-    <option name="localRunNotPublishedPersistedInfo">
-      <LocalReportPersistedInfo>
-        <option name="path" value="C:\Users\User\AppData\Local\Temp\qodana_output\qodana.sarif.json" />
-        <option name="reportGuid" value="e31c3dc2-4a46-42b8-ad0c-92fb7e7163ec" />
-        <option name="reportName" value="main.py/qodana/2024-08-20" />
-      </LocalReportPersistedInfo>
-    </option>
-  </component>
-  <component name="QodanaIsSelectedPersistenceService">
-    <option name="selectedOrLoading" value="true" />
-  </component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="C:\Users\User\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="e31c3dc2-4a46-42b8-ad0c-92fb7e7163ec" reportId="main.py/qodana/2024-08-20" />

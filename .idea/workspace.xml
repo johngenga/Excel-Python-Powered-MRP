@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caf7720d-8eba-4370-96aa-afeee8d22d40" name="Changes" comment="Initial project setup">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2024-08-19T17-08_export.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/data_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/data_loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/forecasting/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/forecasting/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/forecasting/holt_winters_forecast.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/forecasting/holt_winters_forecast.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

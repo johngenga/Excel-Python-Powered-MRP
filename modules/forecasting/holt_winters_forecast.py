@@ -7,9 +7,9 @@ from sklearn.metrics import mean_squared_error
 from math import sqrt
 
 
-def holt_winters_cross_validation(sales_data, n_splits=5):
-    sales_data = os.path.join("data", "sales_data.csv")
-    df = prepare_sales_data(sales_data)
+def holt_winters_cross_validation(df, n_splits=5):
+    df = os.path.join("data", "sales_data.csv")
+    df = prepare_sales_data(df)
     product_codes = df['Product Code'].unique()
     product_names = df['Product Name'].unique()
 
@@ -57,9 +57,9 @@ def holt_winters_cross_validation(sales_data, n_splits=5):
     overall_avg_rmse = np.mean(all_errors)
     return overall_avg_rmse
 
-def holt_winters_forecast_for_products(sales_data, forecast_days=365):
-    sales_data = os.path.join("data", "sales_data.csv")
-    df = prepare_sales_data(sales_data)
+def holt_winters_forecast_for_products(df, forecast_days=365):
+    df = os.path.join("data", "sales_data.csv")
+    df = prepare_sales_data(df)
     product_codes = df['Product Code'].unique()
     product_names = df['Product Name'].unique()
 

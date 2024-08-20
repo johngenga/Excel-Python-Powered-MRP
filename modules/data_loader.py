@@ -32,20 +32,16 @@ def load_and_convert_to_csv(file_path, sheet_name=None):
         # Delete the existing CSV file if it exists
         if os.path.exists(csv_file_path):
             os.remove(csv_file_path)
-
         # Convert to CSV and save
         data.to_csv(csv_file_path, index=False)
-
         # Delete the original XLSX file
         os.remove(file_path)
-
         return data, csv_file_path
 
     elif file_path.endswith('.csv'):
         # Load CSV file
         data = pd.read_csv(file_path)
         return data, file_path
-
     else:
         raise ValueError("Unsupported file format. Please use .xlsx or .csv files.")
 
@@ -168,7 +164,6 @@ def load_sales_data(uploaded_file,finished_goods_data):
     """
     Function to load, convert to CSV, and validate the sales data.
     It checks for consistency with the Finished Goods Master List
-
     """
     if uploaded_file is not None:
         file_path = save_uploaded_file(uploaded_file, output_folder="data")
@@ -233,7 +228,6 @@ def load_finished_goods_inventory(uploaded_file, finished_goods_data):
             required_columns = ['Product Code', 'Product Name', 'Category', 'Unit of Measure', 'Description',
                                 'Quantity', 'Date']
             validated_data = validate_data(finished_goods_inventory, required_columns, 'Product Code')
-
             if validated_data is None:
                 return None
 

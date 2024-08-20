@@ -28,7 +28,7 @@ Installation
 
     bash
 
-git clone https://github.com/johngenga/supply-chain-planning-tool.git
+git clone https://github.com/johngenga/Excel-Python-Powered-MRP
 cd supply-chain-planning-tool
 
 Create a virtual environment and activate it:

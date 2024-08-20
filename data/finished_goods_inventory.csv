@@ -1,0 +1,34 @@
+Product Code,Product Name,Category,Unit of Measure,Description,Quantity,Date
+FG001,Finished Good A,House Hold 1,units,Unique Name 1,61,2024-08-18
+FG002,Finished Good B,House Hold 1,units,Unique Name 2,80,2024-08-18
+FG003,Finished Good C,House Hold 1,units,Unique Name 3,17,2024-08-18
+FG004,Finished Good D,House Hold 2,units,Unique Name 4,104,2024-08-18
+FG005,Finished Good E,House Hold 2,units,Unique Name 5,13,2024-08-18
+FG006,Finished Good F,House Hold 2,units,Unique Name 6,114,2024-08-18
+FG007,Finished Good G,House Hold 3,units,Unique Name 7,116,2024-08-18
+FG008,Finished Good H,House Hold 3,units,Unique Name 8,20,2024-08-18
+FG009,Finished Good I,House Hold 3,units,Unique Name 9,61,2024-08-18
+FG010,Finished Good J,Hobbies 1,units,Unique Name 10,106,2024-08-18
+FG011,Finished Good K,Hobbies 1,units,Unique Name 11,120,2024-08-18
+FG012,Finished Good L,Hobbies 1,units,Unique Name 12,72,2024-08-18
+FG013,Finished Good M,Hobbies 2,units,Unique Name 13,64,2024-08-18
+FG014,Finished Good N,Hobbies 2,units,Unique Name 14,35,2024-08-18
+FG015,Finished Good O,Hobbies 2,units,Unique Name 15,43,2024-08-18
+FG016,Finished Good P,Hobbies 3,units,Unique Name 16,63,2024-08-18
+FG017,Finished Good Q,Hobbies 3,units,Unique Name 17,63,2024-08-18
+FG018,Finished Good R,Hobbies 3,units,Unique Name 18,94,2024-08-18
+FG019,Finished Good S,Food 1,units,Unique Name 19,4,2024-08-18
+FG020,Finished Good T,Food 1,units,Unique Name 20,75,2024-08-18
+FG021,Finished Good U,Food 1,units,Unique Name 21,91,2024-08-18
+FG022,Finished Good V,Food 2,units,Unique Name 22,20,2024-08-18
+FG023,Finished Good W,Food 2,units,Unique Name 23,97,2024-08-18
+FG024,Finished Good X,Food 2,units,Unique Name 24,101,2024-08-18
+FG025,Finished Good Z,Food 3,units,Unique Name 25,94,2024-08-18
+FG026,Finished Good A1,Food 3,units,Unique Name 26,12,2024-08-18
+FG027,Finished Good B1,Food 3,units,Unique Name 27,25,2024-08-18
+FG028,Finished Good C1,Sport 1,units,Unique Name 28,69,2024-08-18
+FG029,Finished Good D1,Sport 1,units,Unique Name 29,59,2024-08-18
+FG030,Finished Good F1,Sport 1,units,Unique Name 30,47,2024-08-18
+FG031,Finished Good LG1,Sport 2,units,Unique Name 31,112,2024-08-18
+FG032,Finished Good H1,Sport 2,units,Unique Name 32,61,2024-08-18
+FG033,Finished Good J1,Sport 2,units,Unique Name 33,71,2024-08-18

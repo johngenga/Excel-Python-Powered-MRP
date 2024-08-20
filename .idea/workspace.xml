@@ -5,7 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caf7720d-8eba-4370-96aa-afeee8d22d40" name="Changes" comment="Initial project setup">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Excel-Python-Powered-MRP.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Testing Environment-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Testing Environment.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/bill_of_materials.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/finished_goods_inventory.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/finished_goods_master.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/raw_materials_inventory.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/raw_materials_master.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/sales_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/bom_processing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/dashboard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/data_loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/forecasting/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/forecasting/data_preparation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/forecasting/holt_winters_forecast.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/forecasting/other_method.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/forecasting/xgboost_forecast.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/mrp_calculation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +87,7 @@
     "Python.main.executor": "Run",
     "Python.supply_chain_tool.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/User/PycharmProjects/Excel-Python-Powered-MRP",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"

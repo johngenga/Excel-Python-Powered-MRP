@@ -5,30 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caf7720d-8eba-4370-96aa-afeee8d22d40" name="Changes" comment="Initial project setup">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Excel-Python-Powered-MRP.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Testing Environment-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Testing Environment.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/bill_of_materials.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/finished_goods_inventory.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/finished_goods_master.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/raw_materials_inventory.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/raw_materials_master.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/sales_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/bom_processing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/dashboard.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/data_loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/forecasting/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/forecasting/data_preparation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/forecasting/holt_winters_forecast.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/forecasting/other_method.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/forecasting/xgboost_forecast.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/mrp_calculation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/data_preparation_features_test-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/forecast.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_preparation_features_test.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Excel-Python-Powered-MRP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Excel-Python-Powered-MRP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Testing Environment-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing Environment.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/data_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/data_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/forecasting/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/forecasting/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/forecasting/data_preparation.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/forecasting/data_preparation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/forecasting/holt_winters_forecast.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/forecasting/holt_winters_forecast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,13 +74,16 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.__init__.executor": "Run",
     "Python.catalog_management.executor": "Run",
     "Python.data_loader.executor": "Run",
+    "Python.data_preparation.executor": "Run",
     "Python.forecasting.executor": "Run",
+    "Python.holt_winters_forecast.executor": "Run",
     "Python.main.executor": "Run",
     "Python.supply_chain_tool.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/User/PycharmProjects/Excel-Python-Powered-MRP",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
@@ -95,7 +91,7 @@
 }]]></component>
   <component name="QodanaReportsService">
     <option name="descriptions">
-      <ReportDescription localRun="true" path="C:\Users\User\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="e31c3dc2-4a46-42b8-ad0c-92fb7e7163ec" reportId="main.py/qodana/2024-08-20" />
+      <ReportDescription localRun="true" path="C:\Users\User\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="5f3ef4ea-0f96-41a6-8770-63849473694d" reportId="main.py/qodana/2024-08-22" />
     </option>
   </component>
   <component name="RecentsManager">
@@ -145,5 +141,16 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial project setup" />
     <option name="LAST_COMMIT_MESSAGE" value="Initial project setup" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>163</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

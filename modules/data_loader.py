@@ -1,22 +1,25 @@
 import streamlit as st
-import pandas as pd
 import os
+import pandas as pd
 
-def save_uploaded_file(uploaded_file, output_folder="data"):
+
+def save_uploaded_file(uploaded_file, output_folder="data", save_as=None):
     """
-    Save the uploaded file to the specified output folder called data and handle file replacement.
+    Save the uploaded file to the specified output folder with a specific file name and handle file replacement.
     """
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
+    # Use the provided name (save_as) if available, otherwise use the original file name
+    file_name = save_as if save_as else uploaded_file.name
 
     # Define the path where the file will be saved
-    file_path = os.path.join(output_folder, uploaded_file.name)
-
+    file_path = os.path.join(output_folder, file_name)
     # Save the new file
     with open(file_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
 
     return file_path
+
 
 def load_and_convert_to_csv(file_path, sheet_name=None):
     """
@@ -26,16 +29,20 @@ def load_and_convert_to_csv(file_path, sheet_name=None):
     if file_path.endswith('.xlsx'):
         # Load Excel file with the given sheet name
         data = pd.read_excel(file_path, sheet_name=sheet_name)
+
         # Prepare CSV file path
         csv_file_path = file_path.replace('.xlsx', '.csv')
 
         # Delete the existing CSV file if it exists
         if os.path.exists(csv_file_path):
             os.remove(csv_file_path)
+
         # Convert to CSV and save
         data.to_csv(csv_file_path, index=False)
+
         # Delete the original XLSX file
         os.remove(file_path)
+
         return data, csv_file_path
 
     elif file_path.endswith('.csv'):
@@ -44,6 +51,7 @@ def load_and_convert_to_csv(file_path, sheet_name=None):
         return data, file_path
     else:
         raise ValueError("Unsupported file format. Please use .xlsx or .csv files.")
+
 
 def validate_data(data, required_columns, unique_column_name):
     """
@@ -66,6 +74,8 @@ def validate_data(data, required_columns, unique_column_name):
         return None
 
     return data
+
+
 def handle_invalid_quantities(df, quantity_column, identifier_column):
     """
     Handle invalid quantities: replace blanks with zero, coerce non-numeric values,
@@ -83,6 +93,7 @@ def handle_invalid_quantities(df, quantity_column, identifier_column):
 
     return df
 
+
 def handle_invalid_dates(df, date_column, identifier_column):
     """
     Handle invalid dates: coerce to datetime, issue warnings for failed conversions.
@@ -98,6 +109,7 @@ def handle_invalid_dates(df, date_column, identifier_column):
 
     return df
 
+
 def load_raw_materials_master(uploaded_file):
     """
     Load, convert, and validate the Raw Materials Master List.
@@ -111,6 +123,7 @@ def load_raw_materials_master(uploaded_file):
             validated_data = validate_data(raw_materials_data, required_columns, 'Material Code')
             return validated_data
     return None
+
 
 def load_finished_goods_master(uploaded_file):
     """
@@ -126,11 +139,12 @@ def load_finished_goods_master(uploaded_file):
             return validated_data
     return None
 
+
 def load_bom(uploaded_file, raw_materials_data, finished_goods_data):
     """
     Load, convert, and validate the Bill of Materials (BOM) data. Validate if columns are consistent
-    and in agreement with the master list and are mot duplicated. Each Finished goods should use a specific raw material only once.
-    We use the unique recipe column to check this.
+    and in agreement with the master list and are mot duplicated. Each Finished goods should use a specific
+    raw material only once. We use the unique recipe column to check this.
     """
     if uploaded_file is not None:
         file_path = save_uploaded_file(uploaded_file, output_folder="data")
@@ -139,7 +153,7 @@ def load_bom(uploaded_file, raw_materials_data, finished_goods_data):
         if bom_data is not None:
             # Validate that the necessary columns are present
             required_columns = ['Product Code', 'Product Name', 'Material Code', 'Material Name', 'Quantity Required',
-                                'Unit of Measure','Unique_Recipe']
+                                'Unit of Measure', 'Unique_Recipe']
             validated_data = validate_data(bom_data, required_columns, 'Unique_Recipe')
 
             if validated_data is None:
@@ -160,7 +174,8 @@ def load_bom(uploaded_file, raw_materials_data, finished_goods_data):
             return bom_data
     return None
 
-def load_sales_data(uploaded_file,finished_goods_data):
+
+def load_sales_data(uploaded_file, finished_goods_data):
     """
     Function to load, convert to CSV, and validate the sales data.
     It checks for consistency with the Finished Goods Master List
@@ -174,14 +189,25 @@ def load_sales_data(uploaded_file,finished_goods_data):
             validated_data = validate_data(sales_data, required_columns, 'Product Code')
             if validated_data is None:
                 return None
+            # Reshape the data to have 'Date' as a single column
+            melted_sales_data = sales_data.melt(id_vars=['Product Code', 'Product Name'],
+                                                var_name='Date',
+                                                value_name='Sales')
+            # Convert the 'Date' column to a datetime format
+            try:
+                melted_sales_data['Date'] = pd.to_datetime(melted_sales_data['Date'])
+            except Exception as e:
+                st.error(f"Error converting date column: {e}")
+                return None
             # Validate consistency with Finished Goods Master List
-            missing_products = set(sales_data['Product Code']) - set(finished_goods_data['Product Code'])
+            missing_products = set(melted_sales_data['Product Code']) - set(finished_goods_data['Product Code'])
             if missing_products:
                 st.error(
                     f"Sales data contains products not listed in the Finished Goods Master List: {missing_products}")
                 return None
-            return sales_data
-        return None, None
+
+            return melted_sales_data
+        return None
 
 
 def load_raw_materials_inventory(uploaded_file, raw_materials_data):
@@ -208,7 +234,8 @@ def load_raw_materials_inventory(uploaded_file, raw_materials_data):
             missing_products = set(validated_data['Material Code']) - set(raw_materials_data['Material Code'])
             if missing_products:
                 st.error(
-                    f"Raw Materials Inventory contains items not listed in the Raw Materials Master List: {missing_products}")
+                    f"Raw Materials Inventory contains items not listed in the Raw Materials Master List:"
+                    f" {missing_products}")
                 return None
 
             return validated_data
@@ -239,7 +266,8 @@ def load_finished_goods_inventory(uploaded_file, finished_goods_data):
             missing_products = set(validated_data['Product Code']) - set(finished_goods_data['Product Code'])
             if missing_products:
                 st.error(
-                    f"Finished Goods Inventory contains items not listed in the Finished Goods Master List: {missing_products}")
+                    f"Finished Goods Inventory contains items not listed in the Finished Goods Master List:"
+                    f" {missing_products}")
                 return None
 
             return validated_data

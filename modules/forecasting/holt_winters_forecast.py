@@ -1,18 +1,17 @@
-from .data_preparation import prepare_sales_data
 import os
 import pandas as pd
 import numpy as np
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from sklearn.metrics import mean_squared_error
 from math import sqrt
+from modules.forecasting.data_preparation import prepare_sales_data
 
 
-def holt_winters_cross_validation(df, n_splits=5):
+def holt_winters_cross_validation(n_splits=5):
     df = os.path.join("data", "sales_data.csv")
     df = prepare_sales_data(df)
     product_codes = df['Product Code'].unique()
     product_names = df['Product Name'].unique()
-
     all_errors = []
 
     for product_code, product_name in zip(product_codes, product_names):
@@ -57,7 +56,8 @@ def holt_winters_cross_validation(df, n_splits=5):
     overall_avg_rmse = np.mean(all_errors)
     return overall_avg_rmse
 
-def holt_winters_forecast_for_products(df, forecast_days=365):
+
+def holt_winters_forecast_for_products(forecast_days=365):
     df = os.path.join("data", "sales_data.csv")
     df = prepare_sales_data(df)
     product_codes = df['Product Code'].unique()
@@ -68,7 +68,7 @@ def holt_winters_forecast_for_products(df, forecast_days=365):
     for product_code, product_name in zip(product_codes, product_names):
         # Filter the data for the specific product
         product_data = df.loc[(df['Product Code'] == product_code) &
-                                             (df['Product Name'] == product_name)].copy()
+                              (df['Product Name'] == product_name)].copy()
 
         # Set 'Date' as the index and convert to PeriodIndex with daily frequency
         product_data['Date'] = pd.to_datetime(product_data['Date'])  # Ensure it's datetime first
@@ -89,7 +89,6 @@ def holt_winters_forecast_for_products(df, forecast_days=365):
             'Product Code': product_code,
             'Product Name': product_name,
         }
-
         # Add the forecasted values to the dictionary with dates as keys
         for i, value in enumerate(forecast):
             forecast_date = (product_data.index[-1] + pd.Timedelta(days=i + 1)).strftime('%Y-%m-%d')
@@ -100,4 +99,18 @@ def holt_winters_forecast_for_products(df, forecast_days=365):
     # Convert the list of dictionaries into a DataFrame
     forecast_df = pd.DataFrame(forecasts)
 
+    # Save the forecast DataFrame to a CSV file in the 'data' folder
+    save_forecast_to_csv(forecast_df, output_folder="data", filename="forecast.csv")
+
     return forecast_df
+
+def save_forecast_to_csv(forecast_df, output_folder="data", filename="forecast.csv"):
+    # Check if the output folder exists; if not, create it
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    # Define the full path for the CSV file
+    file_path = os.path.join(output_folder, filename)
+
+    # Save the DataFrame to a CSV file
+    forecast_df.to_csv(file_path, index=False)

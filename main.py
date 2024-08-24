@@ -108,17 +108,17 @@ with dataset:
             mime="text/csv"
         )
 
-    # Step 4: Load Sales Data and validate it
+    # Load and validate Sales Data
     st.markdown(
         "**Update the Sales Data** - "
         "This is a record from historical sales from periods prior to the forecast date. "
         "Using python machine learning libraries, this data will be used to "
         "create the sales forecast of finished goods"
     )
-    # Set Col structure
     sel_col, disp_col = st.columns(2)
     uploaded_sales_data = sel_col.file_uploader("Upload Sales Data", type=["xlsx", "csv"])
     sales_data = pd.read_csv(os.path.join("data", "sales_data.csv"))
+
     if uploaded_sales_data is not None and finished_goods_data is not None:
         try:
             sales_data = load_sales_data(uploaded_sales_data, finished_goods_data)
@@ -128,15 +128,23 @@ with dataset:
                 sel_col.error("Failed to load Sales data.")
         except Exception as e:
             sel_col.error(f"Error loading Sales Data: {e}")
-    if sales_data is not None:
+
+    # Ensure data is valid and not empty before rendering
+    if sales_data is not None and not sales_data.empty:
         disp_col.write("Preview of Sales Data:")
-        disp_col.write(sales_data.head())
+        try:
+            disp_col.write(sales_data.head(5))  # Display only the first 10 rows
+        except Exception as e:
+            disp_col.error(f"Error displaying Sales Data: {e}")
         disp_col.download_button(
             label="Download Sales Data csv",
             data=open(os.path.join("data", "sales_data.csv"), "rb"),
             file_name="sales_data.csv",
             mime="text/csv"
         )
+    else:
+        disp_col.error("Sales Data is empty or invalid.")
+
 
     # Step 5: Load Raw Materials Inventory and validate it
     st.markdown(
@@ -246,7 +254,7 @@ with forecast:
         with st.spinner("Finished Goods Inventory..."):
             try:
                 # Generate and save the finished goods inventory
-                rolling_finished_goods_inv = rolling_finished_goods(date_range=None)
+                rolling_finished_goods_inv = rolling_finished_goods()
 
             except Exception as e:
                 st.error(f"Error generating rolling FG Stock: {e}")

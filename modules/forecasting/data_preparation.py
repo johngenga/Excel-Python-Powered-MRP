@@ -20,7 +20,6 @@ def prepare_sales_data(file_path):
     df['Date'] = pd.to_datetime(df['Date'])
     return df
 
-
 def prepare_features(file_path):
     df = prepare_sales_data(file_path)
     # Date features

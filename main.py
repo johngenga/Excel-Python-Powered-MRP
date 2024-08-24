@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 from modules import (load_raw_materials_master, load_finished_goods_master, load_bom, load_sales_data,
-                     load_raw_materials_inventory, load_finished_goods_inventory)
+                     load_raw_materials_inventory, load_finished_goods_inventory, rolling_finished_goods)
 from modules.forecasting import holt_winters_cross_validation, holt_winters_forecast_for_products
 
 # Streamlit App
@@ -218,7 +218,7 @@ with forecast:
                 st.error(f"Error calculating RMSE: {e}")
 
     # Button to generate Holt-Winters forecast for the next 365 days
-    if st.button("Generate 365-Day Holt-Winters Forecast"):
+    if st.button("Generate Holt-Winters Forecast"):
         with st.spinner("Generating forecast..."):
             try:
                 # Generate and save the forecast
@@ -228,8 +228,8 @@ with forecast:
                 st.error(f"Error generating forecast: {e}")
     if os.path.join("data", "forecast.csv") is not None:
         # Display the forecast in Streamlit
-        st.write("Holt-Winters Sales forecast for the next 365 days")
-        st.write(pd.read_csv(os.path.join("data", "forecast.csv")))
+        st.write("Holt-Winters Sales forecast preview")
+        st.write(pd.read_csv(os.path.join("data", "forecast.csv")).head(3))
         # Provide a download link for the CSV file
         csv_file_path = os.path.join("data", "forecast.csv")
         st.write(f"Forecast saved to {csv_file_path}")
@@ -237,5 +237,30 @@ with forecast:
             label="Download Forecast CSV",
             data=open(csv_file_path, "rb"),
             file_name="forecast.csv",
+            mime="text/csv"
+        )
+    # Review the rolling stock of finished goods this is the cumulative net inventory assuming sales are done.
+
+    st.write("Cumulative Rolling Inventory of Finished Goods")
+    if st.button("Generate Rolling Finished Goods Inventory"):
+        with st.spinner("Finished Goods Inventory..."):
+            try:
+                # Generate and save the finished goods inventory
+                rolling_finished_goods_inv = rolling_finished_goods(date_range=None)
+
+            except Exception as e:
+                st.error(f"Error generating rolling FG Stock: {e}")
+
+    if os.path.join("data", "rolling_finished_goods.csv") is not None:
+        # Display the rolling finished goods in Streamlit
+        st.write("Rolling Finished Goods Forecast")
+        st.write(pd.read_csv(os.path.join("data", "rolling_finished_goods.csv")).head(3))
+        # Provide a download link for the CSV file
+        csv_file_path = os.path.join("data", "rolling_finished_goods.csv")
+        st.write(f"Rolling Finished Goods {csv_file_path}")
+        st.download_button(
+            label="Download Rolling Finished Goods CSV",
+            data=open(csv_file_path, "rb"),
+            file_name="rolling_finished_goods.csv",
             mime="text/csv"
         )

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Excel-Python-Powered-MRP.iml" filepath="$PROJECT_DIR$/.idea/Excel-Python-Powered-MRP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../M5 Forecasting - Accuracy/.idea/M5 Forecasting - Accuracy.iml" filepath="$PROJECT_DIR$/../M5 Forecasting - Accuracy/.idea/M5 Forecasting - Accuracy.iml" />
     </modules>
   </component>
 </project>
